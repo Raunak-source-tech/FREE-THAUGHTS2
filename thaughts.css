@@ -10,7 +10,9 @@ body, html {
 
 #app-container {
   display: flex;
+  flex-direction: row;
   height: 100vh;
+  overflow: hidden;
 }
 
 #sidebar {
@@ -22,6 +24,7 @@ body, html {
   flex-direction: column;
   gap: 15px;
   align-items: flex-start;
+  transition: all 0.3s ease;
 }
 
 #sidebar h2 {
@@ -62,42 +65,24 @@ body, html {
   cursor: pointer;
 }
 
-/* Mobile View */
-@media screen and (max-width: 600px) {
+/* Mobile responsiveness */
+@media (max-width: 768px) {
   #app-container {
-    flex-direction: column; /* Stack sidebar and main content vertically */
+    flex-direction: column;
   }
 
   #sidebar {
-    display: none; /* Hide sidebar on mobile */
+    width: 100%;
+    display: none; /* Initially hide sidebar on mobile */
   }
 
   #main-content {
-    width: 100%;
-    padding: 10px;
-  }
-
-  h1, h2 {
-    font-size: 1.5rem;
-  }
-
-  .nav-btn {
-    padding: 8px 15px;
-  }
-
-  input, textarea {
-    width: 90%;
+    padding: 15px;
   }
 
   #menu-btn {
     display: block;
-    background-color: #007BFF;
-    color: white;
-    border: none;
-    padding: 10px;
-    border-radius: 8px;
-    cursor: pointer;
-    width: 100%;
-    margin-bottom: 15px;
+    margin: 10px;
+    font-size: 24px;
   }
 }
