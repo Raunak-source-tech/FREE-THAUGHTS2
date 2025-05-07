@@ -13,7 +13,28 @@ let currentUser = null;
 
 function showLoginPage() {
   content.innerHTML = `
-    <div style="text-align:center; margin-top:100px; padding: 0 20px;">
+    <style>
+      @media (max-width: 600px) {
+        #app-container {
+          flex-direction: column;
+        }
+        #sidebar {
+          width: 100%;
+          flex-direction: row;
+          flex-wrap: wrap;
+          align-items: center;
+          justify-content: space-around;
+        }
+        .nav-btn {
+          width: auto;
+          margin: 5px;
+        }
+        #main-content {
+          padding: 15px;
+        }
+      }
+    </style>
+    <div style="text-align:center; margin-top:100px;">
       <h1>Free Thoughts</h1>
       <button onclick="showLoginForm()">Login</button>
       <button onclick="showCreateAccountForm()">Create Account</button>
@@ -23,7 +44,7 @@ function showLoginPage() {
 
 function showLoginForm() {
   content.innerHTML = `
-    <div style="text-align:center; margin-top:100px; padding: 0 20px;">
+    <div style="text-align:center; margin-top:100px;">
       <h2>Login</h2>
       <input id="loginName" placeholder="Name" /><br><br>
       <input id="loginPass" placeholder="Password" type="password" /><br><br>
@@ -35,7 +56,7 @@ function showLoginForm() {
 
 function showCreateAccountForm() {
   content.innerHTML = `
-    <div style="text-align:center; margin-top:100px; padding: 0 20px;">
+    <div style="text-align:center; margin-top:100px;">
       <h2>Create Account</h2>
       <input id="newName" placeholder="Name" /><br><br>
       <input id="newPass" placeholder="Password" type="password" /><br><br>
@@ -89,6 +110,27 @@ function logout() {
 
 function showMainUI() {
   content.innerHTML = `
+    <style>
+      @media (max-width: 600px) {
+        #app-container {
+          flex-direction: column;
+        }
+        #sidebar {
+          width: 100%;
+          flex-direction: row;
+          flex-wrap: wrap;
+          align-items: center;
+          justify-content: space-around;
+        }
+        .nav-btn {
+          width: auto;
+          margin: 5px;
+        }
+        #main-content {
+          padding: 15px;
+        }
+      }
+    </style>
     <div id="app-container">
       <div id="sidebar">
         <h2>Free Thoughts</h2>
@@ -110,6 +152,7 @@ function showFeed() {
   main.innerHTML = `<h2>Feed</h2>`;
 
   Object.entries(posts).forEach(([id, post]) => {
+    const userReact = post.reactions[currentUser] || null;
     main.innerHTML += `
       <div class="post">
         <strong>${post.author}</strong><br>
@@ -217,7 +260,6 @@ function showProfile() {
   const users = loadFromStorage("users");
   const user = users[currentUser];
   const main = document.getElementById("main-content");
-
   main.innerHTML = `
     <h2>Your Profile</h2>
     <p><strong>Name:</strong> ${currentUser}</p>
