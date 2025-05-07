@@ -222,7 +222,7 @@ function showProfile() {
   
   main.innerHTML = `
     <h2>Your Profile</h2>
-    <p>Name: ${user.name}</p>
+    <p>Name: ${currentUser}</p>
     <p>Likes: ${user.likes}</p>
     <p>Dislikes: ${user.dislikes}</p>
     <p>Posts: ${user.posts.length}</p>
