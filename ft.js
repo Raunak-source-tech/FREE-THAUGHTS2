@@ -90,6 +90,7 @@ function logout() {
 function showMainUI() {
   content.innerHTML = `
     <div id="app-container">
+      <button id="menu-btn" onclick="toggleSidebar()">☰ Menu</button>
       <div id="sidebar">
         <h2>Free Thoughts</h2>
         <button class="nav-btn" onclick="showFeed()">FEED</button>
@@ -193,4 +194,28 @@ function showYourPosts() {
 }
 
 function createPost() {
-  const text = document.getElementById("newPost").value
+  const text = document.getElementById("newPost").value.trim();
+  if (!text) return alert("Write something!");
+
+  const posts = loadFromStorage("posts");
+  const users = loadFromStorage("users");
+  const id = Date.now().toString();
+
+  posts[id] = {
+    author: currentUser,
+    text,
+    likes: 0,
+    dislikes: 0,
+    reactions: {},
+  };
+
+  users[currentUser].posts.push(id);
+  saveToStorage("posts", posts);
+  saveToStorage("users", users);
+  showYourPosts();
+}
+
+function showProfile() {
+  const users = loadFromStorage("users");
+  const user = users[currentUser];
+  const main = document.getElementById("main-content
