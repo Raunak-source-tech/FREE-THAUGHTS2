@@ -62,4 +62,30 @@ body, html {
   cursor: pointer;
 }
 
+/* Mobile View */
+@media screen and (max-width: 600px) {
+  #app-container {
+    flex-direction: column; /* Stack the sidebar and main content vertically */
+  }
 
+  #sidebar {
+    display: none; /* Hide the sidebar on mobile */
+  }
+
+  #main-content {
+    width: 100%; /* Ensure main content takes full width */
+    padding: 10px; /* Adjust padding for mobile */
+  }
+
+  h1, h2 {
+    font-size: 1.5rem; /* Adjust header size for mobile */
+  }
+
+  .nav-btn {
+    padding: 8px 15px; /* Adjust button size */
+  }
+
+  input, textarea {
+    width: 90%; /* Limit width of inputs and textareas */
+  }
+}
