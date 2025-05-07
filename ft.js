@@ -222,14 +222,4 @@ function showProfile() {
   
   main.innerHTML = `
     <h2>Your Profile</h2>
-    <p>Name: ${currentUser}</p>
-    <p>Likes: ${user.likes}</p>
-    <p>Dislikes: ${user.dislikes}</p>
-    <p>Posts: ${user.posts.length}</p>
-  `;
-}
-
-function toggleSidebar() {
-  const sidebar = document.getElementById('sidebar');
-  sidebar.style.display = sidebar.style.display === 'none' ? 'block' : 'none';
-}
+    <p>Name: ${current
