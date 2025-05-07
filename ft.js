@@ -218,4 +218,18 @@ function createPost() {
 function showProfile() {
   const users = loadFromStorage("users");
   const user = users[currentUser];
-  const main = document.getElementById("main-content
+  const main = document.getElementById("main-content");
+  
+  main.innerHTML = `
+    <h2>Your Profile</h2>
+    <p>Name: ${user.name}</p>
+    <p>Likes: ${user.likes}</p>
+    <p>Dislikes: ${user.dislikes}</p>
+    <p>Posts: ${user.posts.length}</p>
+  `;
+}
+
+function toggleSidebar() {
+  const sidebar = document.getElementById('sidebar');
+  sidebar.style.display = sidebar.style.display === 'none' ? 'block' : 'none';
+}
