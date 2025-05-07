@@ -227,6 +227,24 @@ function showProfile() {
   `;
 }
 
+// Adjust layout for mobile devices
+function adjustForMobile() {
+  const isMobile = window.innerWidth <= 600;
+  const sidebar = document.getElementById("sidebar");
+  const mainContent = document.getElementById("main-content");
+  
+  if (isMobile) {
+    // On mobile, make sidebar hidden and adjust layout
+    sidebar.style.display = "none";
+    mainContent.style.width = "100%";
+  } else {
+    // On desktop, show sidebar and set width
+    sidebar.style.display = "block";
+    mainContent.style.width = "calc(100% - 200px)";
+  }
+}
+
 // Initial screen
 showLoginPage();
-
+window.onresize = adjustForMobile; // Adjust layout on window resize
+adjustForMobile(); // Initial adjustment for current screen size
